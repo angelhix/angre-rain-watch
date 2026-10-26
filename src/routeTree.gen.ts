@@ -10,13 +10,19 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as AbonnementsRouteImport } from './routes/abonnements'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AlertesRouteImport } from './routes/alertes'
 import { Route as CarteRouteImport } from './routes/carte'
+import { Route as ConnexionRouteImport } from './routes/connexion'
+import { Route as DonneesPersonnellesRouteImport } from './routes/donnees-personnelles'
 import { Route as HistoriqueRouteImport } from './routes/historique'
 import { Route as MesSignalementsRouteImport } from './routes/mes-signalements'
 import { Route as MeteoRouteImport } from './routes/meteo'
 import { Route as ModerationRouteImport } from './routes/moderation'
+import { Route as OperateurRouteImport } from './routes/operateur'
+import { Route as PriorisationRouteImport } from './routes/priorisation'
 import { Route as SignalerRouteImport } from './routes/signaler'
 
 const IndexRoute = IndexRouteImport.update({
@@ -24,9 +30,19 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AProposRoute = AProposRouteImport.update({
+  id: '/a-propos',
+  path: '/a-propos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AbonnementsRoute = AbonnementsRouteImport.update({
   id: '/abonnements',
   path: '/abonnements',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AlertesRoute = AlertesRouteImport.update({
@@ -37,6 +53,16 @@ const AlertesRoute = AlertesRouteImport.update({
 const CarteRoute = CarteRouteImport.update({
   id: '/carte',
   path: '/carte',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConnexionRoute = ConnexionRouteImport.update({
+  id: '/connexion',
+  path: '/connexion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DonneesPersonnellesRoute = DonneesPersonnellesRouteImport.update({
+  id: '/donnees-personnelles',
+  path: '/donnees-personnelles',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HistoriqueRoute = HistoriqueRouteImport.update({
@@ -59,6 +85,16 @@ const ModerationRoute = ModerationRouteImport.update({
   path: '/moderation',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OperateurRoute = OperateurRouteImport.update({
+  id: '/operateur',
+  path: '/operateur',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PriorisationRoute = PriorisationRouteImport.update({
+  id: '/priorisation',
+  path: '/priorisation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SignalerRoute = SignalerRouteImport.update({
   id: '/signaler',
   path: '/signaler',
@@ -67,83 +103,125 @@ const SignalerRoute = SignalerRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
   '/abonnements': typeof AbonnementsRoute
+  '/admin': typeof AdminRoute
   '/alertes': typeof AlertesRoute
   '/carte': typeof CarteRoute
+  '/connexion': typeof ConnexionRoute
+  '/donnees-personnelles': typeof DonneesPersonnellesRoute
   '/historique': typeof HistoriqueRoute
   '/mes-signalements': typeof MesSignalementsRoute
   '/meteo': typeof MeteoRoute
   '/moderation': typeof ModerationRoute
+  '/operateur': typeof OperateurRoute
+  '/priorisation': typeof PriorisationRoute
   '/signaler': typeof SignalerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
   '/abonnements': typeof AbonnementsRoute
+  '/admin': typeof AdminRoute
   '/alertes': typeof AlertesRoute
   '/carte': typeof CarteRoute
+  '/connexion': typeof ConnexionRoute
+  '/donnees-personnelles': typeof DonneesPersonnellesRoute
   '/historique': typeof HistoriqueRoute
   '/mes-signalements': typeof MesSignalementsRoute
   '/meteo': typeof MeteoRoute
   '/moderation': typeof ModerationRoute
+  '/operateur': typeof OperateurRoute
+  '/priorisation': typeof PriorisationRoute
   '/signaler': typeof SignalerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
   '/abonnements': typeof AbonnementsRoute
+  '/admin': typeof AdminRoute
   '/alertes': typeof AlertesRoute
   '/carte': typeof CarteRoute
+  '/connexion': typeof ConnexionRoute
+  '/donnees-personnelles': typeof DonneesPersonnellesRoute
   '/historique': typeof HistoriqueRoute
   '/mes-signalements': typeof MesSignalementsRoute
   '/meteo': typeof MeteoRoute
   '/moderation': typeof ModerationRoute
+  '/operateur': typeof OperateurRoute
+  '/priorisation': typeof PriorisationRoute
   '/signaler': typeof SignalerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/a-propos'
     | '/abonnements'
+    | '/admin'
     | '/alertes'
     | '/carte'
+    | '/connexion'
+    | '/donnees-personnelles'
     | '/historique'
     | '/mes-signalements'
     | '/meteo'
     | '/moderation'
+    | '/operateur'
+    | '/priorisation'
     | '/signaler'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/a-propos'
     | '/abonnements'
+    | '/admin'
     | '/alertes'
     | '/carte'
+    | '/connexion'
+    | '/donnees-personnelles'
     | '/historique'
     | '/mes-signalements'
     | '/meteo'
     | '/moderation'
+    | '/operateur'
+    | '/priorisation'
     | '/signaler'
   id:
     | '__root__'
     | '/'
+    | '/a-propos'
     | '/abonnements'
+    | '/admin'
     | '/alertes'
     | '/carte'
+    | '/connexion'
+    | '/donnees-personnelles'
     | '/historique'
     | '/mes-signalements'
     | '/meteo'
     | '/moderation'
+    | '/operateur'
+    | '/priorisation'
     | '/signaler'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AProposRoute: typeof AProposRoute
   AbonnementsRoute: typeof AbonnementsRoute
+  AdminRoute: typeof AdminRoute
   AlertesRoute: typeof AlertesRoute
   CarteRoute: typeof CarteRoute
+  ConnexionRoute: typeof ConnexionRoute
+  DonneesPersonnellesRoute: typeof DonneesPersonnellesRoute
   HistoriqueRoute: typeof HistoriqueRoute
   MesSignalementsRoute: typeof MesSignalementsRoute
   MeteoRoute: typeof MeteoRoute
   ModerationRoute: typeof ModerationRoute
+  OperateurRoute: typeof OperateurRoute
+  PriorisationRoute: typeof PriorisationRoute
   SignalerRoute: typeof SignalerRoute
 }
 
@@ -156,11 +234,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/a-propos': {
+      id: '/a-propos'
+      path: '/a-propos'
+      fullPath: '/a-propos'
+      preLoaderRoute: typeof AProposRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/abonnements': {
       id: '/abonnements'
       path: '/abonnements'
       fullPath: '/abonnements'
       preLoaderRoute: typeof AbonnementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/alertes': {
@@ -175,6 +267,20 @@ declare module '@tanstack/react-router' {
       path: '/carte'
       fullPath: '/carte'
       preLoaderRoute: typeof CarteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/connexion': {
+      id: '/connexion'
+      path: '/connexion'
+      fullPath: '/connexion'
+      preLoaderRoute: typeof ConnexionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/donnees-personnelles': {
+      id: '/donnees-personnelles'
+      path: '/donnees-personnelles'
+      fullPath: '/donnees-personnelles'
+      preLoaderRoute: typeof DonneesPersonnellesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/historique': {
@@ -205,6 +311,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ModerationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/operateur': {
+      id: '/operateur'
+      path: '/operateur'
+      fullPath: '/operateur'
+      preLoaderRoute: typeof OperateurRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/priorisation': {
+      id: '/priorisation'
+      path: '/priorisation'
+      fullPath: '/priorisation'
+      preLoaderRoute: typeof PriorisationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/signaler': {
       id: '/signaler'
       path: '/signaler'
@@ -217,13 +337,19 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AProposRoute: AProposRoute,
   AbonnementsRoute: AbonnementsRoute,
+  AdminRoute: AdminRoute,
   AlertesRoute: AlertesRoute,
   CarteRoute: CarteRoute,
+  ConnexionRoute: ConnexionRoute,
+  DonneesPersonnellesRoute: DonneesPersonnellesRoute,
   HistoriqueRoute: HistoriqueRoute,
   MesSignalementsRoute: MesSignalementsRoute,
   MeteoRoute: MeteoRoute,
   ModerationRoute: ModerationRoute,
+  OperateurRoute: OperateurRoute,
+  PriorisationRoute: PriorisationRoute,
   SignalerRoute: SignalerRoute,
 }
 export const routeTree = rootRouteImport

@@ -49,7 +49,7 @@ function PickHandler({ onPick }: { onPick: (p: LatLng) => void }) {
   return null;
 }
 
-function Recenter({ center }: { center?: LatLng }) {
+function Recenter({ center }: { center?: LatLng | undefined }) {
   const map = useMap();
   useEffect(() => {
     if (center) map.setView(center, map.getZoom());

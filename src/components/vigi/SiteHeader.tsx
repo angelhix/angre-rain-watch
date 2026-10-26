@@ -86,14 +86,14 @@ export function SiteHeader() {
 function ActiveAlertBanner() {
   const active = alerts.filter((a) => a.status === "active" && !a.exercise);
   if (!active.length) return null;
-  const a = active[0];
+  const a = active[0]!;
   const bg = { vigilance: "bg-level-vigilance text-level-vigilance-foreground", locale: "bg-level-locale text-level-locale-foreground", urgente: "bg-level-urgente text-level-urgente-foreground" }[a.level];
   return (
     <Link to="/alertes" className={`block ${bg}`}>
       <div className="mx-auto flex max-w-[1400px] flex-wrap items-center gap-x-3 gap-y-1 px-4 py-2 text-sm md:px-6">
         <LevelBadge level={a.level} className="bg-background/20 text-current" />
         <strong>{a.title}</strong>
-        <span className="opacity-90">· {a.sectors.map(sectorName).join(", ")} · source : {a.source.split("(")[0].trim()}</span>
+        <span className="opacity-90">· {a.sectors.map(sectorName).join(", ")} · source : {(a.source.split("(")[0] ?? "").trim()}</span>
         <span className="ml-auto underline">Voir les consignes →</span>
       </div>
     </Link>
