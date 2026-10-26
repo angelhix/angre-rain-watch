@@ -10,33 +10,91 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AlertesRouteImport } from './routes/alertes'
+import { Route as CarteRouteImport } from './routes/carte'
+import { Route as HistoriqueRouteImport } from './routes/historique'
+import { Route as MeteoRouteImport } from './routes/meteo'
+import { Route as SignalerRouteImport } from './routes/signaler'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AlertesRoute = AlertesRouteImport.update({
+  id: '/alertes',
+  path: '/alertes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CarteRoute = CarteRouteImport.update({
+  id: '/carte',
+  path: '/carte',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoriqueRoute = HistoriqueRouteImport.update({
+  id: '/historique',
+  path: '/historique',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MeteoRoute = MeteoRouteImport.update({
+  id: '/meteo',
+  path: '/meteo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignalerRoute = SignalerRouteImport.update({
+  id: '/signaler',
+  path: '/signaler',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/alertes': typeof AlertesRoute
+  '/carte': typeof CarteRoute
+  '/historique': typeof HistoriqueRoute
+  '/meteo': typeof MeteoRoute
+  '/signaler': typeof SignalerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/alertes': typeof AlertesRoute
+  '/carte': typeof CarteRoute
+  '/historique': typeof HistoriqueRoute
+  '/meteo': typeof MeteoRoute
+  '/signaler': typeof SignalerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/alertes': typeof AlertesRoute
+  '/carte': typeof CarteRoute
+  '/historique': typeof HistoriqueRoute
+  '/meteo': typeof MeteoRoute
+  '/signaler': typeof SignalerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/alertes' | '/carte' | '/historique' | '/meteo' | '/signaler'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/alertes' | '/carte' | '/historique' | '/meteo' | '/signaler'
+  id:
+    | '__root__'
+    | '/'
+    | '/alertes'
+    | '/carte'
+    | '/historique'
+    | '/meteo'
+    | '/signaler'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AlertesRoute: typeof AlertesRoute
+  CarteRoute: typeof CarteRoute
+  HistoriqueRoute: typeof HistoriqueRoute
+  MeteoRoute: typeof MeteoRoute
+  SignalerRoute: typeof SignalerRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +106,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/alertes': {
+      id: '/alertes'
+      path: '/alertes'
+      fullPath: '/alertes'
+      preLoaderRoute: typeof AlertesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/carte': {
+      id: '/carte'
+      path: '/carte'
+      fullPath: '/carte'
+      preLoaderRoute: typeof CarteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/historique': {
+      id: '/historique'
+      path: '/historique'
+      fullPath: '/historique'
+      preLoaderRoute: typeof HistoriqueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/meteo': {
+      id: '/meteo'
+      path: '/meteo'
+      fullPath: '/meteo'
+      preLoaderRoute: typeof MeteoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signaler': {
+      id: '/signaler'
+      path: '/signaler'
+      fullPath: '/signaler'
+      preLoaderRoute: typeof SignalerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AlertesRoute: AlertesRoute,
+  CarteRoute: CarteRoute,
+  HistoriqueRoute: HistoriqueRoute,
+  MeteoRoute: MeteoRoute,
+  SignalerRoute: SignalerRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
