@@ -20,7 +20,7 @@ export const Route = createFileRoute("/mes-signalements")({
 const variant = { en_attente: "outline", valide: "default", rejete: "destructive", resolu: "secondary" } as const;
 
 function MesSignalements() {
-  const mine = reports.slice(0, 5).concat(reports[6]);
+  const mine = reports.slice(0, 7);
   return (
     <Page>
       <PageHeader title="Mes signalements" description="Le statut se met à jour après vérification par un modérateur." actions={<Button asChild><Link to="/signaler">Nouveau signalement</Link></Button>} />

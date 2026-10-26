@@ -33,7 +33,7 @@ function AbonnementsPage() {
 
   const requestPermission = async () => {
     setConsent(false);
-    if (typeof Notification === "undefined") return toast.error("Notifications non prises en charge sur ce navigateur.");
+    if (typeof Notification === "undefined") { toast.error("Notifications non prises en charge sur ce navigateur."); return; }
     const res = await Notification.requestPermission();
     setNotifState(res === "granted" ? "accorde" : "refuse");
     if (res !== "granted") toast.info("Notifications refusées : vous verrez quand même la bannière d'alerte dans l'application.");

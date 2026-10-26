@@ -34,7 +34,7 @@ function SignalerPage() {
   const [sent, setSent] = useState<string | null>(null);
 
   const locate = () => {
-    if (!navigator.geolocation) return toast.error("Géolocalisation indisponible : placez le point sur la carte.");
+    if (!navigator.geolocation) { toast.error("Géolocalisation indisponible : placez le point sur la carte."); return; }
     navigator.geolocation.getCurrentPosition(
       (p) => setPos([p.coords.latitude, p.coords.longitude]),
       () => {
@@ -46,7 +46,7 @@ function SignalerPage() {
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!pos) return toast.error("Indiquez la position du problème.");
+    if (!pos) { toast.error("Indiquez la position du problème."); return; }
     // TODO backend : POST du signalement (limitation de débit REP-03, compression + suppression EXIF REP-04)
     setSent("S-" + Math.floor(1000 + Math.random() * 9000));
   };

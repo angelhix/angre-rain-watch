@@ -74,7 +74,7 @@ export default function MapView({
   pick?: LatLng | null;
   onPick?: (p: LatLng) => void;
   zoom?: number;
-  center?: LatLng;
+  center?: LatLng | undefined;
 }) {
   const activeAlerts = alerts.filter((a) => a.status === "active" && !a.exercise);
   const visibleReports = reports.filter(

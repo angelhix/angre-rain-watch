@@ -75,7 +75,7 @@ function ModerationPage() {
       {r.status === "en_attente" && (
         <div className="flex flex-wrap gap-2 md:flex-col">
           <Button size="sm" onClick={() => { setStatus(r.id, "valide"); toast.success(`${r.id} validé et publié`); }}><Check />Valider</Button>
-          {duplicates[r.id] && <Button size="sm" variant="outline" onClick={() => { setStatus(r.id, "rejete", { duplicateOf: duplicates[r.id], rejectReason: `Fusionné avec ${duplicates[r.id]}` }); toast.success("Fusion effectuée"); }}><GitMerge />Fusionner</Button>}
+          {duplicates[r.id] && <Button size="sm" variant="outline" onClick={() => { setStatus(r.id, "rejete", { duplicateOf: duplicates[r.id] ?? "", rejectReason: `Fusionné avec ${duplicates[r.id]}` }); toast.success("Fusion effectuée"); }}><GitMerge />Fusionner</Button>}
           <Button size="sm" variant="outline" onClick={() => { setRejecting(r); setReason(""); }}><X />Rejeter</Button>
         </div>
       )}

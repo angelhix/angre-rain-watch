@@ -71,8 +71,8 @@ function HistoriquePage() {
           <div className="mt-4 grid gap-2">
             {exposureClasses.map((c, i) => (
               <div key={c.level} className="text-sm">
-                <div className="flex justify-between"><span>Classe {c.level}</span><span>{Math.round((totals[i] / sum) * 100)} %</span></div>
-                <div className="mt-1 h-2 rounded bg-muted"><div className="h-2 rounded" style={{ width: `${(totals[i] / sum) * 100}%`, background: `var(--expo-${c.level})` }} /></div>
+                <div className="flex justify-between"><span>Classe {c.level}</span><span>{Math.round(((totals[i] ?? 0) / sum) * 100)} %</span></div>
+                <div className="mt-1 h-2 rounded bg-muted"><div className="h-2 rounded" style={{ width: `${((totals[i] ?? 0) / sum) * 100}%`, background: `var(--expo-${c.level})` }} /></div>
               </div>
             ))}
           </div>
