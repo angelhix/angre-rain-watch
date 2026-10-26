@@ -10,15 +10,23 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AbonnementsRouteImport } from './routes/abonnements'
 import { Route as AlertesRouteImport } from './routes/alertes'
 import { Route as CarteRouteImport } from './routes/carte'
 import { Route as HistoriqueRouteImport } from './routes/historique'
+import { Route as MesSignalementsRouteImport } from './routes/mes-signalements'
 import { Route as MeteoRouteImport } from './routes/meteo'
+import { Route as ModerationRouteImport } from './routes/moderation'
 import { Route as SignalerRouteImport } from './routes/signaler'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AbonnementsRoute = AbonnementsRouteImport.update({
+  id: '/abonnements',
+  path: '/abonnements',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AlertesRoute = AlertesRouteImport.update({
@@ -36,9 +44,19 @@ const HistoriqueRoute = HistoriqueRouteImport.update({
   path: '/historique',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MesSignalementsRoute = MesSignalementsRouteImport.update({
+  id: '/mes-signalements',
+  path: '/mes-signalements',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MeteoRoute = MeteoRouteImport.update({
   id: '/meteo',
   path: '/meteo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ModerationRoute = ModerationRouteImport.update({
+  id: '/moderation',
+  path: '/moderation',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SignalerRoute = SignalerRouteImport.update({
@@ -49,51 +67,83 @@ const SignalerRoute = SignalerRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/abonnements': typeof AbonnementsRoute
   '/alertes': typeof AlertesRoute
   '/carte': typeof CarteRoute
   '/historique': typeof HistoriqueRoute
+  '/mes-signalements': typeof MesSignalementsRoute
   '/meteo': typeof MeteoRoute
+  '/moderation': typeof ModerationRoute
   '/signaler': typeof SignalerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/abonnements': typeof AbonnementsRoute
   '/alertes': typeof AlertesRoute
   '/carte': typeof CarteRoute
   '/historique': typeof HistoriqueRoute
+  '/mes-signalements': typeof MesSignalementsRoute
   '/meteo': typeof MeteoRoute
+  '/moderation': typeof ModerationRoute
   '/signaler': typeof SignalerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/abonnements': typeof AbonnementsRoute
   '/alertes': typeof AlertesRoute
   '/carte': typeof CarteRoute
   '/historique': typeof HistoriqueRoute
+  '/mes-signalements': typeof MesSignalementsRoute
   '/meteo': typeof MeteoRoute
+  '/moderation': typeof ModerationRoute
   '/signaler': typeof SignalerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/alertes' | '/carte' | '/historique' | '/meteo' | '/signaler'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/alertes' | '/carte' | '/historique' | '/meteo' | '/signaler'
-  id:
-    | '__root__'
     | '/'
+    | '/abonnements'
     | '/alertes'
     | '/carte'
     | '/historique'
+    | '/mes-signalements'
     | '/meteo'
+    | '/moderation'
+    | '/signaler'
+  fileRoutesByTo: FileRoutesByTo
+  to:
+    | '/'
+    | '/abonnements'
+    | '/alertes'
+    | '/carte'
+    | '/historique'
+    | '/mes-signalements'
+    | '/meteo'
+    | '/moderation'
+    | '/signaler'
+  id:
+    | '__root__'
+    | '/'
+    | '/abonnements'
+    | '/alertes'
+    | '/carte'
+    | '/historique'
+    | '/mes-signalements'
+    | '/meteo'
+    | '/moderation'
     | '/signaler'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AbonnementsRoute: typeof AbonnementsRoute
   AlertesRoute: typeof AlertesRoute
   CarteRoute: typeof CarteRoute
   HistoriqueRoute: typeof HistoriqueRoute
+  MesSignalementsRoute: typeof MesSignalementsRoute
   MeteoRoute: typeof MeteoRoute
+  ModerationRoute: typeof ModerationRoute
   SignalerRoute: typeof SignalerRoute
 }
 
@@ -104,6 +154,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/abonnements': {
+      id: '/abonnements'
+      path: '/abonnements'
+      fullPath: '/abonnements'
+      preLoaderRoute: typeof AbonnementsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/alertes': {
@@ -127,11 +184,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HistoriqueRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/mes-signalements': {
+      id: '/mes-signalements'
+      path: '/mes-signalements'
+      fullPath: '/mes-signalements'
+      preLoaderRoute: typeof MesSignalementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/meteo': {
       id: '/meteo'
       path: '/meteo'
       fullPath: '/meteo'
       preLoaderRoute: typeof MeteoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/moderation': {
+      id: '/moderation'
+      path: '/moderation'
+      fullPath: '/moderation'
+      preLoaderRoute: typeof ModerationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/signaler': {
@@ -146,10 +217,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AbonnementsRoute: AbonnementsRoute,
   AlertesRoute: AlertesRoute,
   CarteRoute: CarteRoute,
   HistoriqueRoute: HistoriqueRoute,
+  MesSignalementsRoute: MesSignalementsRoute,
   MeteoRoute: MeteoRoute,
+  ModerationRoute: ModerationRoute,
   SignalerRoute: SignalerRoute,
 }
 export const routeTree = rootRouteImport
