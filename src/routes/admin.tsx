@@ -78,7 +78,7 @@ function Comp() {
             {sectors.map((s) => (
               <div key={s.id} className="flex items-center justify-between rounded-lg border border-border bg-card p-4">
                 <div><p className="font-semibold">{s.name}</p><p className="text-xs text-muted-foreground">{s.polygon.length} sommets · {s.id}</p></div>
-                <div className="flex items-center gap-2 text-sm">Pilote <Switch checked={pilot[s.id]} onCheckedChange={(v) => setPilot({ ...pilot, [s.id]: v })} /></div>
+                <div className="flex items-center gap-2 text-sm">Pilote <Switch checked={!!pilot[s.id]} onCheckedChange={(v) => setPilot({ ...pilot, [s.id]: v })} /></div>
               </div>
             ))}
           </div>
